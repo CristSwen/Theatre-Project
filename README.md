@@ -20,6 +20,8 @@ On my time on the project I participated in many front end and back end stories 
 possible positions a Cast member could be. After the model was created, I updated the database and scaffolded the<br>
 CRUD pages. </p>
 <br>
+
+
 ```
 using System;
 using System.Collections.Generic;
@@ -60,6 +62,8 @@ namespace TheatreCMS3.Areas.Prod.Models
 to create a new Cast Member on the website, they can upload an image and it will display on the details page. For this<br>
 I first needed to create a method in the CastMember Controller that could retrieve the photo and convert it into<br>
 a byte array.</p><br>
+
+
 ```
 public byte[] PhotoConvert(HttpPostedFileBase photo)
         {
@@ -74,6 +78,8 @@ public byte[] PhotoConvert(HttpPostedFileBase photo)
 <br>
 <p>I then went into the Create and Edit view pages and added a way for the user to upload an image of their choosing</p>
 <br>
+
+
 ```
 <div class="form-group">
             @Html.LabelFor(model => model.Photo, "Photo", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -86,6 +92,8 @@ public byte[] PhotoConvert(HttpPostedFileBase photo)
 <p>Back in the CastMember Controller. I added the code to the Create method to use the PhotoConvert method.<br>
 These had validation to check if there was or was not an image. If there was an image someone is tring to<br>
 upload, call the PhotoConvert method and make the Photo parameter equal to the image.</p>
+
+
 ```
 [HttpPost]
         [ValidateAntiForgeryToken]
@@ -111,6 +119,8 @@ upload, call the PhotoConvert method and make the Photo parameter equal to the i
 <br>
 <p>All that is left is for the image to display on the details page. I took the byte array and converted that<br>
 into a string using an img tag and razer syntax so that the image can be displayed</p>
+
+
 ```
 @if (Model.Photo != null)
                 {
@@ -133,6 +143,8 @@ into a string using an img tag and razer syntax so that the image can be display
 <br><p>The Sign-In page hosts all the names of the developers who worked on the project. Each name added<br>
 will now be contained within a grid across the page. The project had its own color theme as well. That is what<br>
 the "var(--example-example--example);" is.</p><br>
+
+
 ```
 .home-signin--container {
     color: var(--light-color);   
@@ -147,12 +159,16 @@ the "var(--example-example--example);" is.</p><br>
     width: 20em;
     padding: 2em;
 }
+
+
 ```
 <br>
 <h3>Create and Edit page</h3>
 <br><p>The Create and Edit forms were to be placed in the center. All input field borders were to change<br>
 to one of the project theme colors as well. I was also tasked with adding background colors, hover efects<br>
 , headers, and placeholders.</p>
+
+
 ```
 .castmembers-createedit--submitbtn {
     background-color: var(--main-color--light);
@@ -195,6 +211,8 @@ members should also be automatically sorted based on what production they were i
 with making the model for the productions hadn't gotten to it yet. Because of that I had to create a temporary<br>
 string property in the CRUD pages. Lastly if someone were to hover over the image, the edit and delete links<br>
 would appear and if anywhere else on the image was clicked, it would take you to the details page.</p><br>
+
+
 ```
 .castmembers-index--photocontainer {
     width: 18rem;
@@ -228,6 +246,8 @@ would appear and if anywhere else on the image was clicked, it would take you to
 .castmembers-index--image:hover {
     filter: brightness(50%);
 }
+
+
 ```
 <br>
 <h3>Details and Delete</h3>
@@ -235,6 +255,8 @@ would appear and if anywhere else on the image was clicked, it would take you to
 Both pages should have everything centered as well. In this story I also made use of "Font Awesome Icons" to add Icons on the<br>
 Edit, Delete, and Back to List buttons.</p>
 <br>
+
+
 ```
 .castmembers-detailsdelete--container {
     width: 60%;
@@ -266,6 +288,8 @@ Edit, Delete, and Back to List buttons.</p>
 }
 ```
 <br>
+
+
 ```
 <p class="castmembers-detailsdelete--icons">
         <i class="fa fa-pencil-square-o">@Html.ActionLink(" Edit", "Edit", new { id = Model.CastMemberId })</i> |
